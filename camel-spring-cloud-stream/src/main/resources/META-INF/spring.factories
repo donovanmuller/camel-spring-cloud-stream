@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    org.springframework.cloud.stream.config.ChannelBindingAutoConfiguration,\
+    io.switchbit.SpringCloudStreamAutoConfiguration
