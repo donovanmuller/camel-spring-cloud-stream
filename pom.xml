@@ -10,6 +10,13 @@
 
     <name>Camel :: Spring Cloud Stream Parent</name>
 
+    <scm>
+        <connection>scm:git:git@github.com:donovanmuller/camel-spring-cloud-stream.git</connection>
+        <developerConnection>scm:git:git@github.com:donovanmuller/camel-spring-cloud-stream.git</developerConnection>
+        <url>https://github.com/donovanmuller/camel-spring-cloud-stream</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <modules>
         <module>camel-spring-cloud-stream</module>
         <module>camel-spring-cloud-stream-starter</module>
@@ -42,4 +49,54 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>release-sign-artifacts</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <distributionManagement>
+        <repository>
+            <id>bintray-switchbit-public</id>
+            <url>https://api.bintray.com/maven/donovanmuller/switchbit-public/camel-spring-cloud-stream/;publish=1</url>
+        </repository>
+    </distributionManagement>
 </project>

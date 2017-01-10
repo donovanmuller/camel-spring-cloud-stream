@@ -16,7 +16,8 @@ import org.springframework.messaging.MessageChannel;
 
 @Configuration
 @AutoConfigureAfter(ChannelBindingAutoConfiguration.class)
-@Import({ BinderFactoryConfiguration.class, ChannelBindingServiceConfiguration.class })
+@Import({ BinderFactoryConfiguration.class, ChannelBindingAutoConfiguration.class,
+		ChannelBindingServiceConfiguration.class })
 public class SpringCloudStreamAutoConfiguration {
 
 	@Bean
