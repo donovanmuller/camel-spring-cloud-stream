@@ -44,8 +44,7 @@ public class SpringCloudStreamProducer extends DefaultProducer {
 	 * {@link org.springframework.context.ApplicationContext}
 	 */
 	private SubscribableChannel createOutputBindingTarget() {
-		SubscribableChannel channel;
-		channel = endpoint.getBindingTargetFactory()
+		SubscribableChannel channel = endpoint.getBindingTargetFactory()
 				.createOutputChannel(endpoint.getDestination());
 		endpoint.getBeanFactory().registerSingleton(endpoint.getDestination(), channel);
 		channel = (SubscribableChannel) endpoint.getBeanFactory().initializeBean(channel,
