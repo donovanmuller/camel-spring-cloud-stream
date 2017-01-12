@@ -16,13 +16,13 @@ import org.springframework.cloud.stream.config.ChannelBindingServiceProperties;
  * A wrapper around
  * {@link org.springframework.cloud.stream.config.ChannelBindingServiceProperties} that
  * allows the properties provided in the endpoint URI (see
- * {@link SpringCloudStreamConfiguration}) to override the properties provided via Spring
+ * {@link SpringCloudStreamEndpointConfiguration}) to override the properties provided via Spring
  * Boot configuration.
  */
 public class CamelConfigurableBindingServiceProperties
 		extends ChannelBindingServiceProperties {
 
-	private SpringCloudStreamConfiguration camelConfiguration;
+	private SpringCloudStreamEndpointConfiguration camelConfiguration;
 
 	public CamelConfigurableBindingServiceProperties(
 			ChannelBindingServiceProperties bindingServiceProperties) {
@@ -47,7 +47,7 @@ public class CamelConfigurableBindingServiceProperties
 		return producerProperties;
 	}
 
-	public void setCamelConfiguration(SpringCloudStreamConfiguration camelConfiguration,
+	public void setCamelConfiguration(SpringCloudStreamEndpointConfiguration camelConfiguration,
 			String bindingName) {
 		this.camelConfiguration = camelConfiguration;
 		copyNonNullProperties(camelConfiguration, this);

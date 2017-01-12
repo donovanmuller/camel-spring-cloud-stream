@@ -22,6 +22,7 @@ import org.springframework.cloud.stream.test.binder.MessageCollector;
 import org.springframework.cloud.stream.test.matcher.MessageQueueMatcher;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.SubscribableChannel;
@@ -93,6 +94,7 @@ public class SpringCloudStreamComponentTest {
 	}
 
 	@TestConfiguration
+	@Import(SpringCloudStreamConfiguration.class)
 	public static class SpringCloudStreamTestConfig {
 
 		@Bean

@@ -21,6 +21,7 @@ import org.springframework.cloud.stream.binding.ChannelBindingService;
 import org.springframework.cloud.stream.test.binder.MessageCollector;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.expression.Expression;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.SubscribableChannel;
@@ -91,6 +92,7 @@ public class SpringCloudStreamComponentPropertiesTest {
 	}
 
 	@TestConfiguration
+	@Import(SpringCloudStreamConfiguration.class)
 	public static class SpringCloudStreamTestConfig {
 
 		@Bean

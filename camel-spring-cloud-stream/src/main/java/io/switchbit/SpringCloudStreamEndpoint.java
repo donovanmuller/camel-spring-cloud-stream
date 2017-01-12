@@ -19,14 +19,14 @@ public class SpringCloudStreamEndpoint extends DefaultEndpoint {
 	@Metadata(required = "true")
 	private String destination;
 
-	private final SpringCloudStreamConfiguration configuration;
+	private final SpringCloudStreamEndpointConfiguration configuration;
 	private final ConfigurableListableBeanFactory beanFactory;
 	private final CamelBindingService bindingService;
 	private final BindableChannelFactory bindingTargetFactory;
 
 	public SpringCloudStreamEndpoint(String uri, String destination,
 			SpringCloudStreamComponent component,
-			SpringCloudStreamConfiguration configuration,
+			SpringCloudStreamEndpointConfiguration configuration,
 			ConfigurableListableBeanFactory beanFactory,
 			CamelBindingService bindingService,
 			BindableChannelFactory bindingTargetFactory) {
@@ -62,7 +62,7 @@ public class SpringCloudStreamEndpoint extends DefaultEndpoint {
 		return destination;
 	}
 
-	public SpringCloudStreamConfiguration getConfiguration() {
+	public SpringCloudStreamEndpointConfiguration getConfiguration() {
 		return configuration;
 	}
 

@@ -6,7 +6,7 @@ import org.springframework.expression.Expression;
 
 /**
  * Type converter for
- * {@link io.switchbit.SpringCloudStreamConfiguration#partitionKeyExpression}.
+ * {@link SpringCloudStreamEndpointConfiguration#partitionKeyExpression}.
  */
 @Converter
 public class SpelExpressionTypeConverter {

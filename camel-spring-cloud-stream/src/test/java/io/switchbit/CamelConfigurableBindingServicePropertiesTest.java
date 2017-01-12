@@ -22,7 +22,7 @@ public class CamelConfigurableBindingServicePropertiesTest {
 		ChannelBindingServiceProperties.setInstanceIndex(1);
 		CamelConfigurableBindingServiceProperties properties = new CamelConfigurableBindingServiceProperties(
 				ChannelBindingServiceProperties);
-		properties.setCamelConfiguration(new SpringCloudStreamConfiguration(), "input");
+		properties.setCamelConfiguration(new SpringCloudStreamEndpointConfiguration(), "input");
 
 		assertThat(properties.getInstanceCount()).isEqualTo(2);
 		assertThat(properties.getInstanceIndex()).isEqualTo(1);
@@ -36,7 +36,7 @@ public class CamelConfigurableBindingServicePropertiesTest {
 		ChannelBindingServiceProperties.setDefaultBinder("default");
 		CamelConfigurableBindingServiceProperties properties = new CamelConfigurableBindingServiceProperties(
 				ChannelBindingServiceProperties);
-		SpringCloudStreamConfiguration camelConfiguration = new SpringCloudStreamConfiguration();
+		SpringCloudStreamEndpointConfiguration camelConfiguration = new SpringCloudStreamEndpointConfiguration();
 		camelConfiguration.setInstanceCount(1);
 		camelConfiguration.setInstanceIndex(0);
 		properties.setCamelConfiguration(camelConfiguration, "input");
@@ -71,7 +71,7 @@ public class CamelConfigurableBindingServicePropertiesTest {
 
 		CamelConfigurableBindingServiceProperties properties = new CamelConfigurableBindingServiceProperties(
 				ChannelBindingServiceProperties);
-		SpringCloudStreamConfiguration camelConfiguration = new SpringCloudStreamConfiguration();
+		SpringCloudStreamEndpointConfiguration camelConfiguration = new SpringCloudStreamEndpointConfiguration();
 		camelConfiguration.setInstanceIndex(1);
 		camelConfiguration.setMaxAttempts(2);
 		camelConfiguration.setConcurrency(2);
@@ -119,7 +119,7 @@ public class CamelConfigurableBindingServicePropertiesTest {
 
 		CamelConfigurableBindingServiceProperties properties = new CamelConfigurableBindingServiceProperties(
 				ChannelBindingServiceProperties);
-		SpringCloudStreamConfiguration camelConfiguration = new SpringCloudStreamConfiguration();
+		SpringCloudStreamEndpointConfiguration camelConfiguration = new SpringCloudStreamEndpointConfiguration();
 		camelConfiguration.setRequiredGroups(new String[] { "group1" });
 		camelConfiguration.setHeaderMode(HeaderMode.embeddedHeaders);
 		properties.setCamelConfiguration(camelConfiguration, "input");

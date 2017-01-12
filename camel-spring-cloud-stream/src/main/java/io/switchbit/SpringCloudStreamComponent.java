@@ -41,9 +41,9 @@ public class SpringCloudStreamComponent extends UriEndpointComponent
 		return endpoint;
 	}
 
-	private SpringCloudStreamConfiguration createConfiguration(
+	private SpringCloudStreamEndpointConfiguration createConfiguration(
 			Map<String, Object> parameters) throws Exception {
-		SpringCloudStreamConfiguration configuration = new SpringCloudStreamConfiguration();
+		SpringCloudStreamEndpointConfiguration configuration = new SpringCloudStreamEndpointConfiguration();
 		setProperties(configuration, parameters);
 
 		return configuration;
