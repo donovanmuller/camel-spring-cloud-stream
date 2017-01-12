@@ -1,4 +1,4 @@
-# Camel Spring Cloud Stream
+# Camel Spring Cloud Stream [![Build Status](https://travis-ci.org/donovanmuller/camel-spring-cloud-stream.svg?branch=master)](https://travis-ci.org/donovanmuller/camel-spring-cloud-stream)
 
 An Apache Camel component to add support for [Spring Cloud Stream](https://cloud.spring.io/spring-cloud-stream/).
 
@@ -146,7 +146,7 @@ See the repository below for a sample application that creates a stream with the
 * Camel Tweet Processor - Renders a template, using the received message body, as the content of new tweet
 * Camel Twitter Sink - Creates a new tweet on the configured users timeline with the content of the received message body
 
-See the sample project here: https://github.com/donovanmuller/camel-spring-cloud-stream
+See the sample project here: https://github.com/donovanmuller/camel-twitter-stream
 
 ## More information
 
