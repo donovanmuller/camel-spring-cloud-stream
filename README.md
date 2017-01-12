@@ -28,7 +28,7 @@ and then add the `camel-spring-cloud-stream-starter` dependency
     <dependency>
         <groupId>io.switchbit</groupId>
         <artifactId>camel-spring-cloud-stream-starter</artifactId>
-        <version>0.9</version>
+        <version>0.10</version>
     </dependency>
 ```
 
