@@ -14,9 +14,9 @@ repository in your Maven `pom.xml`
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-            <id>central</id>
+            <id>bintray-donovanmuller-switchbit-public</id>
             <name>bintray</name>
-            <url>http://jcenter.bintray.com</url>
+            <url>http://dl.bintray.com/donovanmuller/switchbit-public</url>
         </repository>
     </repositories>
     ...
