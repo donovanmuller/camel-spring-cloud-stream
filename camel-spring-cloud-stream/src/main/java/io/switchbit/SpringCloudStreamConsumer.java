@@ -44,8 +44,8 @@ public class SpringCloudStreamConsumer extends DefaultConsumer {
 	 * {@link org.springframework.context.ApplicationContext}
 	 */
 	private SubscribableChannel createInputBindingTarget() {
-		SubscribableChannel channel = endpoint.getBindingTargetFactory()
-				.createInputChannel(endpoint.getDestination());
+		SubscribableChannel channel = (SubscribableChannel) endpoint
+				.getBindingTargetFactory().createInput(endpoint.getDestination());
 		endpoint.getBeanFactory().registerSingleton(endpoint.getDestination(), channel);
 		channel = (SubscribableChannel) endpoint.getBeanFactory().initializeBean(channel,
 				endpoint.getDestination());

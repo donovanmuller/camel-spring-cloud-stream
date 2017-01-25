@@ -17,7 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.cloud.stream.binder.ConsumerProperties;
 import org.springframework.cloud.stream.binder.ProducerProperties;
-import org.springframework.cloud.stream.binding.ChannelBindingService;
+import org.springframework.cloud.stream.binding.BindingService;
 import org.springframework.cloud.stream.test.binder.MessageCollector;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -50,7 +50,7 @@ public class SpringCloudStreamComponentPropertiesTest {
 	private MessageCollector messageCollector;
 
 	@Autowired
-	private ChannelBindingService bindingService;
+	private BindingService bindingService;
 
 	@Autowired
 	private ApplicationContext context;
@@ -65,8 +65,8 @@ public class SpringCloudStreamComponentPropertiesTest {
 		inputMockEndpoint.assertIsSatisfied();
 
 		ConsumerProperties consumerProperties = bindingService
-				.getChannelBindingServiceProperties().getConsumerProperties("propsInput");
-		assertThat(bindingService.getChannelBindingServiceProperties()
+				.getBindingServiceProperties().getConsumerProperties("propsInput");
+		assertThat(bindingService.getBindingServiceProperties()
 				.getBindingDestination("propsInput")).isEqualTo("propsInput");
 		assertThat(consumerProperties.getInstanceIndex()).isEqualTo(1);
 		assertThat(consumerProperties.getMaxAttempts()).isEqualTo(1);
@@ -77,9 +77,9 @@ public class SpringCloudStreamComponentPropertiesTest {
 		producerTemplate.sendBody("direct:input", "test");
 
 		ProducerProperties producerProperties = bindingService
-				.getChannelBindingServiceProperties()
+				.getBindingServiceProperties()
 				.getProducerProperties("propsOutput");
-		assertThat(bindingService.getChannelBindingServiceProperties()
+		assertThat(bindingService.getBindingServiceProperties()
 				.getBindingDestination("propsOutput")).isEqualTo("propsOutput");
 		assertThat(producerProperties.getPartitionCount()).isEqualTo(2);
 		assertThat(producerProperties.getPartitionKeyExpression())

@@ -10,7 +10,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.cloud.stream.binding.BindableChannelFactory;
+import org.springframework.cloud.stream.binding.BindingTargetFactory;
 
 public class SpringCloudStreamComponent extends UriEndpointComponent
 		implements BeanFactoryAware {
@@ -21,7 +21,7 @@ public class SpringCloudStreamComponent extends UriEndpointComponent
 	private CamelBindingService bindingService;
 
 	@Autowired
-	private BindableChannelFactory bindingTargetFactory;
+	private BindingTargetFactory bindingTargetFactory;
 
 	public SpringCloudStreamComponent() {
 		super(SpringCloudStreamEndpoint.class);

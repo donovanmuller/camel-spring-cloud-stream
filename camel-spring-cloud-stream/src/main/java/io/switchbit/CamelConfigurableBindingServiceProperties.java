@@ -10,22 +10,21 @@ import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.cloud.stream.binder.ConsumerProperties;
 import org.springframework.cloud.stream.binder.ProducerProperties;
 import org.springframework.cloud.stream.config.BindingProperties;
-import org.springframework.cloud.stream.config.ChannelBindingServiceProperties;
+import org.springframework.cloud.stream.config.BindingServiceProperties;
 
 /**
  * A wrapper around
- * {@link org.springframework.cloud.stream.config.ChannelBindingServiceProperties} that
- * allows the properties provided in the endpoint URI (see
- * {@link SpringCloudStreamEndpointConfiguration}) to override the properties provided via Spring
- * Boot configuration.
+ * {@link org.springframework.cloud.stream.config.BindingServiceProperties} that allows
+ * the properties provided in the endpoint URI (see
+ * {@link SpringCloudStreamEndpointConfiguration}) to override the properties provided via
+ * Spring Boot configuration.
  */
-public class CamelConfigurableBindingServiceProperties
-		extends ChannelBindingServiceProperties {
+public class CamelConfigurableBindingServiceProperties extends BindingServiceProperties {
 
 	private SpringCloudStreamEndpointConfiguration camelConfiguration;
 
 	public CamelConfigurableBindingServiceProperties(
-			ChannelBindingServiceProperties bindingServiceProperties) {
+			BindingServiceProperties bindingServiceProperties) {
 		BeanUtils.copyProperties(bindingServiceProperties, this);
 	}
 
@@ -47,7 +46,8 @@ public class CamelConfigurableBindingServiceProperties
 		return producerProperties;
 	}
 
-	public void setCamelConfiguration(SpringCloudStreamEndpointConfiguration camelConfiguration,
+	public void setCamelConfiguration(
+			SpringCloudStreamEndpointConfiguration camelConfiguration,
 			String bindingName) {
 		this.camelConfiguration = camelConfiguration;
 		copyNonNullProperties(camelConfiguration, this);

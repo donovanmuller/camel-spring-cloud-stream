@@ -10,19 +10,20 @@ import org.springframework.cloud.stream.binder.ConsumerProperties;
 import org.springframework.cloud.stream.binder.HeaderMode;
 import org.springframework.cloud.stream.binder.ProducerProperties;
 import org.springframework.cloud.stream.config.BindingProperties;
-import org.springframework.cloud.stream.config.ChannelBindingServiceProperties;
+import org.springframework.cloud.stream.config.BindingServiceProperties;
 import org.springframework.integration.expression.ValueExpression;
 
 public class CamelConfigurableBindingServicePropertiesTest {
 
 	@Test
 	public void testHonourBindingPropertiesDefaultBehaviour() {
-		ChannelBindingServiceProperties ChannelBindingServiceProperties = new ChannelBindingServiceProperties();
-		ChannelBindingServiceProperties.setInstanceCount(2);
-		ChannelBindingServiceProperties.setInstanceIndex(1);
+		BindingServiceProperties BindingServiceProperties = new BindingServiceProperties();
+		BindingServiceProperties.setInstanceCount(2);
+		BindingServiceProperties.setInstanceIndex(1);
 		CamelConfigurableBindingServiceProperties properties = new CamelConfigurableBindingServiceProperties(
-				ChannelBindingServiceProperties);
-		properties.setCamelConfiguration(new SpringCloudStreamEndpointConfiguration(), "input");
+				BindingServiceProperties);
+		properties.setCamelConfiguration(new SpringCloudStreamEndpointConfiguration(),
+				"input");
 
 		assertThat(properties.getInstanceCount()).isEqualTo(2);
 		assertThat(properties.getInstanceIndex()).isEqualTo(1);
@@ -30,12 +31,12 @@ public class CamelConfigurableBindingServicePropertiesTest {
 
 	@Test
 	public void testBindingPropertiesOverriddenByCamelConfiguration() {
-		ChannelBindingServiceProperties ChannelBindingServiceProperties = new ChannelBindingServiceProperties();
-		ChannelBindingServiceProperties.setInstanceCount(2);
-		ChannelBindingServiceProperties.setInstanceIndex(1);
-		ChannelBindingServiceProperties.setDefaultBinder("default");
+		BindingServiceProperties BindingServiceProperties = new BindingServiceProperties();
+		BindingServiceProperties.setInstanceCount(2);
+		BindingServiceProperties.setInstanceIndex(1);
+		BindingServiceProperties.setDefaultBinder("default");
 		CamelConfigurableBindingServiceProperties properties = new CamelConfigurableBindingServiceProperties(
-				ChannelBindingServiceProperties);
+				BindingServiceProperties);
 		SpringCloudStreamEndpointConfiguration camelConfiguration = new SpringCloudStreamEndpointConfiguration();
 		camelConfiguration.setInstanceCount(1);
 		camelConfiguration.setInstanceIndex(0);
@@ -48,7 +49,7 @@ public class CamelConfigurableBindingServicePropertiesTest {
 
 	@Test
 	public void testConsumerPropertiesDefaultBehaviour() {
-		ChannelBindingServiceProperties ChannelBindingServiceProperties = new ChannelBindingServiceProperties();
+		BindingServiceProperties BindingServiceProperties = new BindingServiceProperties();
 		Map<String, BindingProperties> bindingProperties = new HashMap<>();
 
 		BindingProperties binding1Properties = new BindingProperties();
@@ -67,10 +68,10 @@ public class CamelConfigurableBindingServicePropertiesTest {
 		binding2Properties.setConsumer(binding2ConsumerProperties);
 		bindingProperties.put("binding2", binding2Properties);
 
-		ChannelBindingServiceProperties.setBindings(bindingProperties);
+		BindingServiceProperties.setBindings(bindingProperties);
 
 		CamelConfigurableBindingServiceProperties properties = new CamelConfigurableBindingServiceProperties(
-				ChannelBindingServiceProperties);
+				BindingServiceProperties);
 		SpringCloudStreamEndpointConfiguration camelConfiguration = new SpringCloudStreamEndpointConfiguration();
 		camelConfiguration.setInstanceIndex(1);
 		camelConfiguration.setMaxAttempts(2);
@@ -96,7 +97,7 @@ public class CamelConfigurableBindingServicePropertiesTest {
 
 	@Test
 	public void testProducerPropertiesDefaultBehaviour() {
-		ChannelBindingServiceProperties ChannelBindingServiceProperties = new ChannelBindingServiceProperties();
+		BindingServiceProperties BindingServiceProperties = new BindingServiceProperties();
 		Map<String, BindingProperties> bindingProperties = new HashMap<>();
 
 		BindingProperties binding1Properties = new BindingProperties();
@@ -115,10 +116,10 @@ public class CamelConfigurableBindingServicePropertiesTest {
 		binding2Properties.setProducer(binding2ProducerProperties);
 		bindingProperties.put("binding2", binding2Properties);
 
-		ChannelBindingServiceProperties.setBindings(bindingProperties);
+		BindingServiceProperties.setBindings(bindingProperties);
 
 		CamelConfigurableBindingServiceProperties properties = new CamelConfigurableBindingServiceProperties(
-				ChannelBindingServiceProperties);
+				BindingServiceProperties);
 		SpringCloudStreamEndpointConfiguration camelConfiguration = new SpringCloudStreamEndpointConfiguration();
 		camelConfiguration.setRequiredGroups(new String[] { "group1" });
 		camelConfiguration.setHeaderMode(HeaderMode.embeddedHeaders);

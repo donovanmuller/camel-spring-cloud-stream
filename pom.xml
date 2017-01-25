@@ -30,7 +30,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-stream-dependencies</artifactId>
-                <version>Brooklyn.SR1</version>
+                <version>Brooklyn.SR2</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

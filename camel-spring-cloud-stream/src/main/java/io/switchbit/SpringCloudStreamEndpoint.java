@@ -9,8 +9,8 @@ import org.apache.camel.spi.UriEndpoint;
 import org.apache.camel.spi.UriPath;
 import org.apache.camel.util.ObjectHelper;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.cloud.stream.binding.BindableChannelFactory;
-import org.springframework.cloud.stream.binding.ChannelBindingService;
+import org.springframework.cloud.stream.binding.BindingService;
+import org.springframework.cloud.stream.binding.BindingTargetFactory;
 
 @UriEndpoint(scheme = "scst", title = "Spring Cloud Stream", syntax = "scst:destination", label = "spring,cloud,stream")
 public class SpringCloudStreamEndpoint extends DefaultEndpoint {
@@ -22,14 +22,14 @@ public class SpringCloudStreamEndpoint extends DefaultEndpoint {
 	private final SpringCloudStreamEndpointConfiguration configuration;
 	private final ConfigurableListableBeanFactory beanFactory;
 	private final CamelBindingService bindingService;
-	private final BindableChannelFactory bindingTargetFactory;
+	private final BindingTargetFactory bindingTargetFactory;
 
 	public SpringCloudStreamEndpoint(String uri, String destination,
 			SpringCloudStreamComponent component,
 			SpringCloudStreamEndpointConfiguration configuration,
 			ConfigurableListableBeanFactory beanFactory,
 			CamelBindingService bindingService,
-			BindableChannelFactory bindingTargetFactory) {
+			BindingTargetFactory bindingTargetFactory) {
 		super(uri, component);
 
 		this.destination = ObjectHelper.notNull(destination, "destination");
@@ -41,15 +41,15 @@ public class SpringCloudStreamEndpoint extends DefaultEndpoint {
 
 	@Override
 	public Producer createProducer() throws Exception {
-		bindingService.getChannelBindingServiceProperties()
-				.setCamelConfiguration(configuration, getDestination());
+		bindingService.getBindingServiceProperties().setCamelConfiguration(configuration,
+				getDestination());
 		return new SpringCloudStreamProducer(this);
 	}
 
 	@Override
 	public Consumer createConsumer(Processor processor) throws Exception {
-		bindingService.getChannelBindingServiceProperties()
-				.setCamelConfiguration(configuration, getDestination());
+		bindingService.getBindingServiceProperties().setCamelConfiguration(configuration,
+				getDestination());
 		return new SpringCloudStreamConsumer(this, processor);
 	}
 
@@ -70,11 +70,11 @@ public class SpringCloudStreamEndpoint extends DefaultEndpoint {
 		return beanFactory;
 	}
 
-	public ChannelBindingService getBindingService() {
+	public BindingService getBindingService() {
 		return bindingService;
 	}
 
-	public BindableChannelFactory getBindingTargetFactory() {
+	public BindingTargetFactory getBindingTargetFactory() {
 		return bindingTargetFactory;
 	}
 }
