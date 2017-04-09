@@ -28,7 +28,7 @@ and then add the `camel-spring-cloud-stream-starter` dependency
     <dependency>
         <groupId>io.switchbit</groupId>
         <artifactId>camel-spring-cloud-stream-starter</artifactId>
-        <version>0.11</version>
+        <version>0.13</version>
     </dependency>
 ```
 
@@ -38,7 +38,7 @@ comes with three predefined [interfaces](http://docs.spring.io/spring-cloud-stre
 `Source`, `Processor` and `Sink`. The functionality of these interfaces can be replicated via the `scst` Camel endpoint.
 
 ### Source
- 
+
 ```java
 @Component
 public class SourceRoute extends RouteBuilder {
@@ -106,7 +106,7 @@ to the corresponding annotated methods. The method parameters and return values 
 to both incoming and outgoing messages respectively, which are then sent over the channels.
 These channels are in turn bound to binder implementations which facilitate sending/receiving messages
 over the relevant messaging middleware (Kafka, RabbitMQ, etc.).
-  
+
 The Camel Spring Cloud Stream component does not rely on the auto configuration properties
 that `@EnableBinding` initiates but rather creates and binds the `MessageChannel`'s
 as well as invoking the binding mechanism. Essentially achieving the same outcome.
@@ -156,11 +156,3 @@ See the following blog post for more details: https://blog.switchbit.io/camel-sp
 
 * The Spring Boot Actuator `/metrics` endpoint does not currently include the created channel metrics - [#1](https://github.com/donovanmuller/camel-spring-cloud-stream/issues/1)
 * Multiple destination values on the endpoint (`scdf:input1,input2`) is currently not supported.
-
-
-
-
-
-
-
-

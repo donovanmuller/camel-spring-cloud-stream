@@ -22,7 +22,7 @@
     </modules>
 
     <properties>
-        <camel.version>2.18.1</camel.version>
+        <camel.version>2.18.3</camel.version>
     </properties>
 
     <dependencyManagement>
@@ -30,14 +30,14 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-stream-dependencies</artifactId>
-                <version>Brooklyn.SR2</version>
+                <version>Brooklyn.SR3</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>1.4.3.RELEASE</version>
+                <version>1.5.2.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

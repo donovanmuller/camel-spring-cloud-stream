@@ -32,7 +32,9 @@ public class CamelConfigurableBindingServiceProperties extends BindingServicePro
 	public ConsumerProperties getConsumerProperties(String inputBindingName) {
 		ConsumerProperties consumerProperties = super.getConsumerProperties(
 				inputBindingName);
-		copyNonNullProperties(camelConfiguration, consumerProperties);
+		if (camelConfiguration != null) {
+			copyNonNullProperties(camelConfiguration, consumerProperties);
+		}
 
 		return consumerProperties;
 	}
@@ -41,7 +43,9 @@ public class CamelConfigurableBindingServiceProperties extends BindingServicePro
 	public ProducerProperties getProducerProperties(String outputBindingName) {
 		ProducerProperties producerProperties = super.getProducerProperties(
 				outputBindingName);
-		copyNonNullProperties(camelConfiguration, producerProperties);
+		if (camelConfiguration != null) {
+			copyNonNullProperties(camelConfiguration, producerProperties);
+		}
 
 		return producerProperties;
 	}
