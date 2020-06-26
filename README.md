@@ -155,4 +155,4 @@ See the following blog post for more details: https://blog.switchbit.io/camel-sp
 ## Known issues
 
 * The Spring Boot Actuator `/metrics` endpoint does not currently include the created channel metrics - [#1](https://github.com/donovanmuller/camel-spring-cloud-stream/issues/1)
-* Multiple destination values on the endpoint (`scdf:input1,input2`) is currently not supported.
+* Multiple destination values on the endpoint (`scdf:input1,input2`) is currently not supported
